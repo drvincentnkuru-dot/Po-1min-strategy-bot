@@ -1,0 +1,314 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #07111f;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  padding: 16px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #94a8bb;
+  font-size: 12px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 13px;
+  border-radius: 20px;
+  background: #10283b;
+  color: #39e68a;
+  font-size: 11px;
+}
+
+.controls,
+.signal-card,
+.all-signals,
+.risk-card,
+.history {
+  background: #0d1b2a;
+  border: 1px solid #1d354b;
+  border-radius: 14px;
+  padding: 17px;
+  margin-bottom: 17px;
+}
+
+label {
+  display: block;
+  color: #8fa5b9;
+  font-size: 11px;
+  margin: 12px 0 6px;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  background: #081522;
+  border: 1px solid #29445c;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.expiry-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.expiry {
+  flex: 1;
+  padding: 12px 5px;
+  background: #081522;
+  border: 1px solid #29445c;
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.expiry.active {
+  background: #145d85;
+  border-color: #249bd5;
+}
+
+.analyze-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #1689c2;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.analyze-btn:disabled {
+  opacity: .6;
+}
+
+h2 {
+  font-size: 14px;
+  color: #9fb2c6;
+  margin-bottom: 14px;
+}
+
+.signal-display {
+  padding: 22px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.signal-display span {
+  font-size: 29px;
+  font-weight: bold;
+}
+
+.signal-display.call {
+  color: #39e68a;
+  background: rgba(30, 200, 110, .12);
+  border: 1px solid #208e60;
+}
+
+.signal-display.put {
+  color: #ff6570;
+  background: rgba(230, 60, 70, .12);
+  border: 1px solid #a83a45;
+}
+
+.signal-display.no-trade {
+  color: #aeb9c5;
+  background: rgba(150, 160, 175, .08);
+  border: 1px solid #3b4652;
+}
+
+.confidence {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.confidence strong {
+  font-size: 22px;
+}
+
+.time-info {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.time-info div {
+  flex: 1;
+  text-align: center;
+  padding: 11px;
+  border-radius: 8px;
+  background: #081522;
+}
+
+.time-info span {
+  display: block;
+  color: #8196aa;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.analysis-item {
+  padding: 11px;
+  border-radius: 8px;
+  background: #081522;
+}
+
+.analysis-item span {
+  display: block;
+  color: #8095a9;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.analysis-item strong {
+  font-size: 12px;
+}
+
+.signal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 60px;
+  padding: 13px 5px;
+  border-bottom: 1px solid #1b3043;
+  font-size: 13px;
+}
+
+.signal-row:last-child {
+  border-bottom: none;
+}
+
+.signal-row strong {
+  text-align: center;
+}
+
+.signal-row span:last-child {
+  text-align: right;
+  color: #8ca1b5;
+}
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.risk-grid div {
+  background: #081522;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.risk-grid span {
+  display: block;
+  color: #8195a9;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.risk-grid strong {
+  font-size: 13px;
+}
+
+.warning {
+  margin-top: 12px;
+  color: #d6a95b;
+  font-size: 11px;
+  text-align: center;
+}
+
+.history-item {
+  background: #081522;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.history-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.history-bottom {
+  color: #7f94a8;
+  font-size: 10px;
+}
+
+.history-signal.call {
+  color: #39e68a;
+}
+
+.history-signal.put {
+  color: #ff6570;
+}
+
+.history-signal.no-trade {
+  color: #aeb9c5;
+}
+
+.empty {
+  text-align: center;
+  color: #70859a;
+  padding: 15px;
+  font-size: 12px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  color: #6e8397;
+  font-size: 11px;
+}
+
+footer small {
+  display: block;
+  margin-top: 5px;
+}
+
+@media (max-width: 500px) {
+
+  .container {
+    padding: 11px;
+  }
+
+  header h1 {
+    font-size: 21px;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
