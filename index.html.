@@ -1,219 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PO 1-Min Strategy Bot</title>
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="app">
+<div class="container">
 
-    <header class="header">
+  <header>
+    <h1>🤖 PO 1-MIN STRATEGY BOT</h1>
+    <p>EMA 9/21 • Bollinger Bands • RSI 14 • S/R • Volatility</p>
+    <div class="status">● OTC STRATEGY ENGINE</div>
+  </header>
+
+  <section class="controls">
+
+    <label>MARKET</label>
+    <select id="market">
+      <option value="OTC">OTC MARKET</option>
+    </select>
+
+    <label>PAIR</label>
+    <select id="pair"></select>
+
+    <label>EXPIRATION</label>
+
+    <div class="expiry-buttons">
+      <button class="expiry active" data-expiry="1">1 MIN</button>
+      <button class="expiry" data-expiry="2">2 MIN</button>
+      <button class="expiry" data-expiry="3">3 MIN</button>
+    </div>
+
+    <button id="analyzeBtn" class="analyze-btn">
+      ANALYZE MARKET
+    </button>
+
+  </section>
+
+  <section class="signal-card">
+
+    <h2>AI SIGNAL</h2>
+
+    <div id="signalDisplay" class="signal-display no-trade">
+      <span id="signalText">NO TRADE</span>
+    </div>
+
+    <div class="confidence">
+      Confidence:
+      <strong id="confidence">0%</strong>
+    </div>
+
+    <div class="time-info">
+
       <div>
-        <h1>🤖 PO 1-Min Strategy Bot</h1>
-        <p>EMA 9/21 • RSI 14 • Support & Resistance</p>
+        <span>Entry</span>
+        <strong id="entry">--:--:--</strong>
       </div>
 
-      <div class="status">
-        <span class="status-dot"></span>
-        DEMO MODE
-      </div>
-    </header>
-
-
-    <section class="control-card">
-
-      <div class="control-group">
-        <label>Market</label>
-
-        <select id="marketType">
-          <option value="OTC">OTC MARKET</option>
-          <option value="LIVE">LIVE MARKET</option>
-        </select>
+      <div>
+        <span>Expiry</span>
+        <strong id="expiryTime">--:--:--</strong>
       </div>
 
+    </div>
 
-      <div class="control-group">
-        <label>Currency Pair</label>
+    <div class="analysis-grid">
 
-        <select id="pair">
-
-          <option value="EUR/USD OTC">
-            EUR/USD OTC
-          </option>
-
-          <option value="GBP/USD OTC">
-            GBP/USD OTC
-          </option>
-
-          <option value="EUR/JPY OTC">
-            EUR/JPY OTC
-          </option>
-
-          <option value="AUD/JPY OTC">
-            AUD/JPY OTC
-          </option>
-
-          <option value="USD/JPY OTC">
-            USD/JPY OTC
-          </option>
-
-          <option value="AUD/USD OTC">
-            AUD/USD OTC
-          </option>
-
-          <option value="USD/CAD OTC">
-            USD/CAD OTC
-          </option>
-
-          <option value="EUR/GBP OTC">
-            EUR/GBP OTC
-          </option>
-
-          <option value="NZD/CAD OTC">
-            NZD/CAD OTC
-          </option>
-
-          <option value="GBP/JPY OTC">
-            GBP/JPY OTC
-          </option>
-
-          <option value="USD/CHF OTC">
-            USD/CHF OTC
-          </option>
-
-          <option value="NZD/USD OTC">
-            NZD/USD OTC
-          </option>
-
-        </select>
+      <div class="analysis-item">
+        <span>EMA 9 / 21</span>
+        <strong id="emaStatus">WAITING</strong>
       </div>
 
-
-      <div class="control-group">
-        <label>Expiration</label>
-
-        <div class="expiry-buttons">
-
-          <button
-            class="expiry-btn active"
-            data-expiry="1"
-          >
-            1 MIN
-          </button>
-
-          <button
-            class="expiry-btn"
-            data-expiry="2"
-          >
-            2 MIN
-          </button>
-
-          <button
-            class="expiry-btn"
-            data-expiry="3"
-          >
-            3 MIN
-          </button>
-
-        </div>
+      <div class="analysis-item">
+        <span>Bollinger Bands</span>
+        <strong id="bbStatus">WAITING</strong>
       </div>
 
-
-      <button id="analyzeBtn" class="analyze-btn">
-        ANALYZE MARKET
-      </button>
-
-    </section>
-
-
-    <section class="signal-card">
-
-      <div class="section-title">
-        AI SIGNAL
+      <div class="analysis-item">
+        <span>RSI 14</span>
+        <strong id="rsiStatus">WAITING</strong>
       </div>
 
-      <div id="signalBox" class="signal-box neutral">
-
-        <div id="signalText">
-          NO TRADE
-        </div>
-
-        <div class="confidence">
-          Confidence
-          <strong id="confidence">
-            0%
-          </strong>
-        </div>
-
+      <div class="analysis-item">
+        <span>Support</span>
+        <strong id="supportStatus">WAITING</strong>
       </div>
 
-
-      <div class="signal-details">
-
-        <div>
-          <span>Pair</span>
-          <strong id="signalPair">
-            EUR/USD OTC
-          </strong>
-        </div>
-
-        <div>
-          <span>Expiration</span>
-          <strong id="signalExpiry">
-            1 Minute
-          </strong>
-        </div>
-
-        <div>
-          <span>Entry</span>
-          <strong id="entryTime">
-            --
-          </strong>
-        </div>
-
-        <div>
-          <span>Expiry</span>
-          <strong id="expiryTime">
-            --
-          </strong>
-        </div>
-
-        <div>
-          <span>Countdown</span>
-          <strong id="countdown">
-            --
-          </strong>
-        </div>
-
+      <div class="analysis-item">
+        <span>Resistance</span>
+        <strong id="resistanceStatus">WAITING</strong>
       </div>
 
-    </section>
-
-
-    <section class="analysis-card">
-
-      <div class="section-title">
-        MARKET ANALYSIS
+      <div class="analysis-item">
+        <span>Volatility</span>
+        <strong id="volatilityStatus">WAITING</strong>
       </div>
 
+      <div class="analysis-item">
+        <span>Market Condition</span>
+        <strong id="marketStatus">WAITING</strong>
+      </div>
 
-      <div class="indicator-grid">
+    </div>
 
-        <div class="indicator">
-          <span>EMA 9</span>
-          <strong id="ema9">--</strong>
-        </div>
+  </section>
 
-        <div class="indicator">
-          <span>EMA 21</span>
-          <strong id="ema21">--</strong>
-        </div>
+  <section class="all-signals">
+
+    <h2>ALL TIMEFRAMES</h2>
+
+    <div class="signal-row">
+      <span>1 MIN</span>
+      <strong id="signal1">NO TRADE</strong>
+      <span id="confidence1">0%</span>
+    </div>
+
+    <div class="signal-row">
+      <span>2 MIN</span>
+      <strong id="signal2">NO TRADE</strong>
+      <span id="confidence2">0%</span>
+    </div>
+
+    <div class="signal-row">
+      <span>3 MIN</span>
+      <strong id="signal3">NO TRADE</strong>
+      <span id="confidence3">0%</span>
+    </div>
+
+  </section>
+
+  <section class="risk-card">
+
+    <h2>💰 MONEY MANAGEMENT</h2>
+
+    <div class="risk-grid">
+
+      <div>
+        <span>Risk</span>
+        <strong>1–2%</strong>
+      </div>
+
+      <div>
+        <span>Max Trades</span>
+        <strong>2</strong>
+      </div>
+
+      <div>
+        <span>Loss Stop</span>
+        <strong>3 Losses</strong>
+      </div>
+
+      <div>
+        <span>Recovery</span>
+        <strong>2.3–2.5x</strong>
+      </div>
+
+    </div>
+
+    <p class="warning">
+      Demo / analysis only. No automatic real-money trading.
+    </p>
+
+  </section>
+
+  <section class="history">
+
+    <h2>SIGNAL HISTORY</h2>
+
+    <div id="historyList">
+      <p class="empty">No signals analyzed yet.</p>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>PO 1-Min Strategy Bot V1</p>
+    <small>Demo Strategy Engine</small>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
