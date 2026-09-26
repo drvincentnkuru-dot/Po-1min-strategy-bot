@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>PO 1-Min Strategy Bot</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header class="header">
+      <div>
+        <h1>🤖 PO 1-Min Strategy Bot</h1>
+        <p>EMA 9/21 • RSI 14 • Support & Resistance</p>
+      </div>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        DEMO MODE
+      </div>
+    </header>
+
+
+    <section class="control-card">
+
+      <div class="control-group">
+        <label>Market</label>
+
+        <select id="marketType">
+          <option value="OTC">OTC MARKET</option>
+          <option value="LIVE">LIVE MARKET</option>
+        </select>
+      </div>
+
+
+      <div class="control-group">
+        <label>Currency Pair</label>
+
+        <select id="pair">
+
+          <option value="EUR/USD OTC">
+            EUR/USD OTC
+          </option>
+
+          <option value="GBP/USD OTC">
+            GBP/USD OTC
+          </option>
+
+          <option value="EUR/JPY OTC">
+            EUR/JPY OTC
+          </option>
+
+          <option value="AUD/JPY OTC">
+            AUD/JPY OTC
+          </option>
+
+          <option value="USD/JPY OTC">
+            USD/JPY OTC
+          </option>
+
+          <option value="AUD/USD OTC">
+            AUD/USD OTC
+          </option>
+
+          <option value="USD/CAD OTC">
+            USD/CAD OTC
+          </option>
+
+          <option value="EUR/GBP OTC">
+            EUR/GBP OTC
+          </option>
+
+          <option value="NZD/CAD OTC">
+            NZD/CAD OTC
+          </option>
+
+          <option value="GBP/JPY OTC">
+            GBP/JPY OTC
+          </option>
+
+          <option value="USD/CHF OTC">
+            USD/CHF OTC
+          </option>
+
+          <option value="NZD/USD OTC">
+            NZD/USD OTC
+          </option>
+
+        </select>
+      </div>
+
+
+      <div class="control-group">
+        <label>Expiration</label>
+
+        <div class="expiry-buttons">
+
+          <button
+            class="expiry-btn active"
+            data-expiry="1"
+          >
+            1 MIN
+          </button>
+
+          <button
+            class="expiry-btn"
+            data-expiry="2"
+          >
+            2 MIN
+          </button>
+
+          <button
+            class="expiry-btn"
+            data-expiry="3"
+          >
+            3 MIN
+          </button>
+
+        </div>
+      </div>
+
+
+      <button id="analyzeBtn" class="analyze-btn">
+        ANALYZE MARKET
+      </button>
+
+    </section>
+
+
+    <section class="signal-card">
+
+      <div class="section-title">
+        AI SIGNAL
+      </div>
+
+      <div id="signalBox" class="signal-box neutral">
+
+        <div id="signalText">
+          NO TRADE
+        </div>
+
+        <div class="confidence">
+          Confidence
+          <strong id="confidence">
+            0%
+          </strong>
+        </div>
+
+      </div>
+
+
+      <div class="signal-details">
+
+        <div>
+          <span>Pair</span>
+          <strong id="signalPair">
+            EUR/USD OTC
+          </strong>
+        </div>
+
+        <div>
+          <span>Expiration</span>
+          <strong id="signalExpiry">
+            1 Minute
+          </strong>
+        </div>
+
+        <div>
+          <span>Entry</span>
+          <strong id="entryTime">
+            --
+          </strong>
+        </div>
+
+        <div>
+          <span>Expiry</span>
+          <strong id="expiryTime">
+            --
+          </strong>
+        </div>
+
+        <div>
+          <span>Countdown</span>
+          <strong id="countdown">
+            --
+          </strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="analysis-card">
+
+      <div class="section-title">
+        MARKET ANALYSIS
+      </div>
+
+
+      <div class="indicator-grid">
+
+        <div class="indicator">
+          <span>EMA 9</span>
+          <strong id="ema9">--</strong>
+        </div>
+
+        <div class="indicator">
+          <span>EMA 21</span>
+          <strong id="ema21">--</strong>
+        </div>
